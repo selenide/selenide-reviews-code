@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    testImplementation('com.codeborne:selenide:5.15.0')
+    testRuntimeOnly('org.slf4j:slf4j-simple:1.7.29')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
+
+    testImplementation("com.google.code.gson:gson:2.3.1")
+
+    testRuntimeOnly("com.browserup:browserup-proxy-core:2.1.2")
+
+
+}
+
+test {
+    //systemProperty "chromeoptions.prefs","intl.accept_languages=en"
+    systemProperty "chromeoptions.prefs","profile.default_content_setting_values.automatic_downloads=1"
+    useJUnitPlatform()
+}
